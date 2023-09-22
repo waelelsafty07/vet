@@ -137,6 +137,7 @@ Example command:
  gem install rails
 ```
  -->
+ install postgres
 
 ### Setup
 
@@ -150,6 +151,7 @@ Example commands:
   git clone git@github.com:myaccount/my-project.git
 ```
 --->
+> git clone https://github.com/waelelsafty07/vet.git
 
 ### Install
 
