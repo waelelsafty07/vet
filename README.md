@@ -1,8 +1,3 @@
-# curriculum-databases-projects-template
-
-> This template should be used for database related projects at Microverse.
-> Generate your own repository, update this README and edit all files content while working on projects. You should not be adding any new files unless asked otherwise.
-
 
 ## Getting Started
 
@@ -14,27 +9,6 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 <a name="readme-top"></a>
 
-<!--
-HOW TO USE:
-This is an example of how you may give instructions on setting up your project locally.
-
-Modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-After you're finished please remove all the comments and instructions!
--->
 
 
 <!-- TABLE OF CONTENTS -->
@@ -82,6 +56,8 @@ After you're finished please remove all the comments and instructions!
 - **Create Database**
 - **Create Table**
 - **Select Table**
+- **Join Tables**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -130,7 +106,7 @@ In the project directory, run/ Excute each query in the following order:
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-### Run tests
+### Run tests <a name="run-tests"> </a>
 
 ```test
 No tests here...
@@ -151,6 +127,13 @@ No tests here...
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- FUTURE FEATURES -->
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- [ ] **[Add Index]**
+ 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- CONTRIBUTING -->
 
 ## 🤝 Contributing <a name="contributing"></a>
