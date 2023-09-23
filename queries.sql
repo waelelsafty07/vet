@@ -1,3 +1,4 @@
+
 /*Queries that provide answers to the questions from all projects.*/
 
 /* all animals whose name ends in "mon" */
@@ -31,27 +32,6 @@ WHERE name <> 'Gabumon';
 /* all animals with a weight between 10.4kg and 17.3kg (including the animals with the weights that equals precisely 10.4kg or 17.3kg)*/
 SELECT * FROM animals 
 WHERE weight_kg BETWEEN 10.4 AND 17.3;
-
-/*Inside a  update the animals table by setting the species column to unspecified. Verify that change was made. Then roll back the change and verify that the species columns went back to the state before the .*/
-BEGIN ;
-UPDATE animals SET species = 'unspecified';
-SELECT * FROM animals WHERE species = 'unspecified';
-ROLLBACK;
-SELECT * FROM animals;
-
-/*Update the animals table by setting the species column to digimon for all animals that have a name ending in mon.*/
-BEGIN ;
-UPDATE animals
-SET species = 'digimon'
-WHERE name LIKE '%mon';
-
-/*Update the animals table by setting the species column to pokemon for all animals that don't have species already set.*/
-UPDATE animals
-SET species = 'pokemon'
-WHERE species IS NULL OR species = ' ';
-
-/*commit */
-COMMIT;
 
 /*Inside a  delete all records in the animals table, then roll back*/
 BEGIN ;
@@ -102,16 +82,6 @@ GROUP BY neutered
 ORDER BY total_escapes DESC
 LIMIT 1;
 
--- What is the minimum and maximum weight of each type of animal
-SELECT  species, MIN(weight_kg) AS min_weight, MAX(weight_kg) AS max_weight
-FROM animals
-GROUP BY  species;
-
--- What is the average number of escape attempts per animal type of those born between 1990 and 2000
-SELECT species, AVG(escape_attempts) AS avg_escape_attempts
-FROM animals
-WHERE  date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'
-GROUP BY species;
 
 
 SELECT a.name
