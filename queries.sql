@@ -10,7 +10,7 @@ SELECT * FROM animals WHERE neutered = TRUE;
 SELECT * FROM animals WHERE name <> 'Gabumon';
 SELECT * FROM animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
-BEGIN TRANSACTION;
+BEGIN;
 
 UPDATE animals SET species = 'Unspecified';
 
@@ -20,7 +20,7 @@ ROLLBACK;
 
 SELECT * FROM animals;
 
-BEGIN TRANSACTION;
+BEGIN ;
 
 UPDATE animals SET species = 'Digimon' WHERE name LIKE '%mon';
 
@@ -32,7 +32,7 @@ COMMIT;
 
 SELECT * FROM animals;
 
-BEGIN TRANSACTION;
+BEGIN ;
 
 DELETE FROM animals;
 
@@ -42,7 +42,7 @@ ROLLBACK;
 
 SELECT * FROM animals;
 
-BEGIN TRANSACTION;
+BEGIN ;
 
 DELETE FROM animals WHERE date_of_birth > '2022-01-01';
 
