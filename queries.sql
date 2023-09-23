@@ -1,3 +1,4 @@
+
 /*Queries that provide answers to the questions from all projects.*/
 
 /* all animals whose name ends in "mon" */
@@ -31,27 +32,6 @@ WHERE name <> 'Gabumon';
 /* all animals with a weight between 10.4kg and 17.3kg (including the animals with the weights that equals precisely 10.4kg or 17.3kg)*/
 SELECT * FROM animals 
 WHERE weight_kg BETWEEN 10.4 AND 17.3;
-
-/*Inside a  update the animals table by setting the species column to unspecified. Verify that change was made. Then roll back the change and verify that the species columns went back to the state before the .*/
-BEGIN ;
-UPDATE animals SET species = 'unspecified';
-SELECT * FROM animals WHERE species = 'unspecified';
-ROLLBACK;
-SELECT * FROM animals;
-
-/*Update the animals table by setting the species column to digimon for all animals that have a name ending in mon.*/
-BEGIN ;
-UPDATE animals
-SET species = 'digimon'
-WHERE name LIKE '%mon';
-
-/*Update the animals table by setting the species column to pokemon for all animals that don't have species already set.*/
-UPDATE animals
-SET species = 'pokemon'
-WHERE species IS NULL OR species = ' ';
-
-/*commit */
-COMMIT;
 
 /*Inside a  delete all records in the animals table, then roll back*/
 BEGIN ;
@@ -102,13 +82,41 @@ GROUP BY neutered
 ORDER BY total_escapes DESC
 LIMIT 1;
 
--- What is the minimum and maximum weight of each type of animal
-SELECT  species, MIN(weight_kg) AS min_weight, MAX(weight_kg) AS max_weight
-FROM animals
-GROUP BY  species;
 
--- What is the average number of escape attempts per animal type of those born between 1990 and 2000
-SELECT species, AVG(escape_attempts) AS avg_escape_attempts
-FROM animals
-WHERE  date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'
-GROUP BY species;
+
+SELECT a.name
+FROM animals a
+JOIN owners o ON a.owner_id = o.id
+WHERE o.full_name = 'Melody Pond';
+
+SELECT a.name
+FROM animals a
+JOIN species s ON a.species_id = s.id
+WHERE s.name = 'Pokemon';
+
+SELECT o.full_name, a.name
+FROM owners o
+LEFT JOIN animals a ON o.id = a.owner_id;
+
+SELECT s.name, COUNT(*) as animal_count
+FROM animals a
+JOIN species s ON a.species_id = s.id
+GROUP BY s.name;
+
+SELECT a.name
+FROM animals a
+JOIN species s ON a.species_id = s.id
+JOIN owners o ON a.owner_id = o.id
+WHERE s.name = 'Digimon' AND o.full_name = 'Jennifer Orwell';
+
+SELECT a.name
+FROM animals a
+JOIN owners o ON a.owner_id = o.id
+WHERE o.full_name = 'Dean Winchester' AND a.escape_attempts = 0;
+
+SELECT o.full_name, COUNT(*) as animal_count
+FROM owners o
+JOIN animals a ON o.id = a.owner_id
+GROUP BY o.full_name
+ORDER BY animal_count DESC
+LIMIT 1;
